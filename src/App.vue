@@ -1,19 +1,20 @@
 <template>
   <h1>Vuex 4.x</h1>
   <p>{{ count }}</p>
+  <button @click="increment">increment</button>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, computed } from "vue";
 import { useStore } from "./store/counter";
 
 export default defineComponent({
   name: "App",
   setup() {
     const store = useStore();
-    const count = store.state.count;
     return {
-      count
+      count: computed(() => store.state.count),
+      increment: () => store.commit("increment")
     };
   }
 });
