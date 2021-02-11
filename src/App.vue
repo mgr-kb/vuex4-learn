@@ -1,6 +1,6 @@
 <template>
   <h1>Vuex 4.x</h1>
-  <p>{{ count }}</p>
+  <p>count: {{ count }}</p>
   <button @click="increment">increment</button>
 </template>
 
@@ -14,6 +14,7 @@ export default defineComponent({
     const store = useStore();
     return {
       count: computed(() => store.state.count),
+      double: () => computed(() => store.getters.doubleCount),
       increment: () => store.commit("increment")
     };
   }
